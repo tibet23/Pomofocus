@@ -40,10 +40,8 @@
 - Optional browser push notifications for interval completions.
 
 ### ⌨️ Keyboard Shortcuts
-- `Space`: Start / Pause session
-- `Alt + S`: Skip to next interval
-- `Alt + R`: Reset timer
-- `Alt + T`: Toggle theme
+- `Space`: Start Timer
+- `M`: Toggle Audio Chime
 
 ---
 
