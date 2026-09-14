@@ -1,5 +1,7 @@
 import type {NextConfig} from 'next';
 
+const isStaticExport = process.env.NEXT_OUTPUT !== 'standalone' && !process.env.STANDALONE;
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   eslint: {
@@ -9,31 +11,36 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: false,
   },
   images: {
+    unoptimized: true,
     remotePatterns: [],
   },
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'Referrer-Policy',
-            value: 'strict-origin-when-cross-origin',
-          },
-          {
-            key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=()',
-          },
-          {
-            key: 'Strict-Transport-Security',
-            value: 'max-age=63072000; includeSubDomains; preload',
-          },
-          ...(process.env.NODE_ENV === 'production'
-            ? [
+  ...(isStaticExport
+    ? {
+        output: 'export',
+      }
+    : {
+        output: 'standalone',
+        async headers() {
+          return [
+            {
+              source: '/(.*)',
+              headers: [
+                {
+                  key: 'X-Content-Type-Options',
+                  value: 'nosniff',
+                },
+                {
+                  key: 'Referrer-Policy',
+                  value: 'strict-origin-when-cross-origin',
+                },
+                {
+                  key: 'Permissions-Policy',
+                  value: 'camera=(), microphone=(), geolocation=()',
+                },
+                {
+                  key: 'Strict-Transport-Security',
+                  value: 'max-age=63072000; includeSubDomains; preload',
+                },
                 {
                   key: 'X-Frame-Options',
                   value: 'DENY',
@@ -52,13 +59,11 @@ const nextConfig: NextConfig = {
                     "form-action 'self'",
                   ].join('; '),
                 },
-              ]
-            : []),
-        ],
-      },
-    ];
-  },
-  output: 'standalone',
+              ],
+            },
+          ];
+        },
+      }),
   transpilePackages: ['motion'],
   webpack: (config, {dev}) => {
     // HMR is disabled in AI Studio via DISABLE_HMR env var.
