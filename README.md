@@ -58,52 +58,6 @@
 
 ---
 
-## Getting Started
-
-### Prerequisites
-
-Ensure you have Node.js 18+ and npm installed:
-
-```bash
-node -v # v18.0.0 or higher
-npm -v
-```
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/pomofocus.git
-   cd pomofocus
-   ```
-
-2. Install project dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Start the local development server:
-   ```bash
-   npm run dev
-   ```
-
-4. Open your browser and navigate to:
-   ```
-   http://localhost:3000
-   ```
-
----
-
-## Available Scripts
-
-| Command | Description |
-| :--- | :--- |
-| `npm run dev` | Starts the Next.js development server on port 3000 |
-| `npm run build` | Builds the optimized production bundle in `.next` |
-| `npm run start` | Runs the production server build |
-| `npm run lint` | Runs ESLint to validate code quality and syntax |
-
----
 
 ## Project Structure
 
