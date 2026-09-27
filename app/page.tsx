@@ -776,13 +776,31 @@ export default function PomofocusApp() {
 
         {/* Central Controls (Start only - cannot stop once running) */}
         <div id="controlsPanel" className="flex flex-col items-center justify-center mb-6">
+          
+          {/* THE MANTRA SENTENCE PLACED HERE */}
+          <div 
+            className={`text-xs font-medium tracking-wide mb-4 transition-colors ${
+              isLight 
+                ? 'text-stone-600' 
+                : isDarkGray 
+                ? 'text-stone-300/70' 
+                : 'text-stone-400'
+            }`}
+          >
+            Once you hit start, the doors lock. No pause. <span className="font-semibold">Commit or reset.</span>
+          </div>
+
           {/* Small Dark Rectangular Info Button placed well above Start */}
           <button
             id="infoExplanationBtn"
             type="button"
             onClick={() => setShowInfoModal(true)}
             title="Explanation: How Pomodoro works"
-            className="mb-5 px-3 py-1 rounded-[3px] bg-[#1c1d22] text-stone-300 hover:text-white hover:bg-black border border-stone-700/80 flex items-center justify-center transition-all cursor-pointer shadow-xs hover:border-stone-500"
+            className={`mb-5 px-3 py-1 rounded-[3px] border flex items-center justify-center transition-all cursor-pointer shadow-xs ${
+              isLight
+                ? 'bg-stone-100 text-stone-500 hover:text-stone-800 border-stone-300 hover:border-stone-400 hover:bg-stone-200'
+                : 'bg-[#1c1d22] text-stone-300 hover:text-white hover:bg-black border-stone-700/80 hover:border-stone-500'
+            }`}
           >
             <Info size={13} />
           </button>
