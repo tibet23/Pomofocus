@@ -8,26 +8,40 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: 'Pomofocus',
-  description: 'Ultra-minimalist deep focus timer with digital clock view, intelligent session sequences, and background drift protection.',
+  metadataBase: new URL('https://pomofocus.live'),
+  title: 'Pomofocus Live – Ad-Free Minimalist Pomodoro Timer',
+  description:
+    'Ultra-minimalist deep focus timer with digital clock view, intelligent session sequences, and background drift protection.',
+  keywords: [
+    'pomofocus',
+    'pomofocus live',
+    'ad-free pomodoro timer',
+    'minimalist focus timer',
+    'study timer',
+    'online pomodoro clock',
+  ],
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
-    title: 'Pomofocus',
+    title: 'Pomofocus Live',
   },
   icons: {
     icon: '/icon.svg',
     apple: '/apple-touch-icon.png',
   },
   openGraph: {
-    title: 'Pomofocus',
-    description: 'Ultra-minimalist deep focus timer with digital clock view, intelligent session sequences, and background drift protection.',
+    title: 'Pomofocus Live – Ad-Free Minimalist Pomodoro Timer',
+    description:
+      'Ultra-minimalist deep focus timer with digital clock view, intelligent session sequences, and background drift protection.',
+    url: 'https://pomofocus.live',
+    siteName: 'Pomofocus Live',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Pomofocus',
-    description: 'Ultra-minimalist deep focus timer with digital clock view, intelligent session sequences, and background drift protection.',
+    title: 'Pomofocus Live – Ad-Free Minimalist Pomodoro Timer',
+    description:
+      'Ultra-minimalist deep focus timer with digital clock view, intelligent session sequences, and background drift protection.',
   },
 };
 
