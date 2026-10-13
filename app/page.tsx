@@ -442,7 +442,7 @@ export default function PomofocusApp() {
     if (status === 'completed') {
       document.title = 'Complete | POMOFOCUS';
     } else if (status === 'running') {
-      document.title = `${timeStr} - ${typeLabel} | POMOFOCUS`;
+      document.title = `${timeStr} ${typeLabel} | POMOFOCUS`;
     } else {
       document.title = 'POMOFOCUS';
     }
@@ -944,6 +944,22 @@ export default function PomofocusApp() {
           >
             <HelpCircle size={14} />
           </button>
+
+          {/* Ko-fi Support Link - Pill Style */}
+          <a
+            href="https://ko-fi.com/tibet23"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Buy me a coffee"
+            className={`h-8 px-2.5 rounded border flex items-center gap-1.5 transition-colors cursor-pointer text-xs font-medium ${
+              isLight
+                ? 'border-stone-300 text-stone-600 hover:text-stone-900 bg-stone-100 hover:bg-stone-200'
+                : 'border-white/10 text-stone-400 hover:text-white bg-white/5 hover:bg-white/10'
+            }`}
+          >
+            <span className="text-sm">☕</span>
+            <span>Support</span>
+          </a>
         </div>
 
         <div className={`hidden sm:block text-[11px] tracking-wider ${isLight ? 'text-stone-500' : 'text-stone-500'}`}>
