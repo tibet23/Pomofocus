@@ -97,7 +97,7 @@ const DEFAULT_STATE: SavedState = {
   soundEnabled: true,
   notificationsEnabled: false,
   theme: 'white-on-black',
-};
+}
 
 function loadInitialState(): SavedState {
   const fallback = DEFAULT_STATE;
@@ -499,12 +499,8 @@ export default function PomofocusApp() {
           if (next) playChime('focus');
           return next;
         });
-      } else if (e.key === '?') {
-        setShowShortcuts((prev) => !prev);
       } else if (e.key === 'Escape') {
-        setShowShortcuts(false);
         setShowResetConfirm(false);
-        setShowInfoModal(false);
       }
     };
     window.addEventListener('keydown', onKey);
