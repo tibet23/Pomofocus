@@ -9,9 +9,7 @@ import {
   VolumeX,
   Bell,
   BellOff,
-  HelpCircle,
-  Info,
-  X
+  Mail
 } from 'lucide-react';
 
 const STORAGE_KEY = 'pomofocus_session_v2';
@@ -208,8 +206,6 @@ export default function PomofocusApp() {
 
   // Overlays
   const [showResetConfirm, setShowResetConfirm] = useState<boolean>(false);
-  const [showShortcuts, setShowShortcuts] = useState<boolean>(false);
-  const [showInfoModal, setShowInfoModal] = useState<boolean>(false);
 
   const audioCtxRef = useRef<AudioContext | null>(null);
   const hasHydratedRef = useRef<boolean>(false);
@@ -774,12 +770,10 @@ export default function PomofocusApp() {
           </div>
         </section>
 
-        {/* Central Controls (Start only - cannot stop once running) */}
+        {/* Central Controls */}
         <div id="controlsPanel" className="flex flex-col items-center justify-center mb-6">
-          
-          {/* THE MANTRA SENTENCE PLACED HERE */}
           <div 
-            className={`text-xs font-medium tracking-wide mb-4 transition-colors ${
+            className={`text-xs font-medium tracking-wide mb-6 transition-colors ${
               isLight 
                 ? 'text-stone-600' 
                 : isDarkGray 
@@ -789,21 +783,6 @@ export default function PomofocusApp() {
           >
             Once you hit start, the doors lock. No pause. <span className="font-semibold">Commit or reset.</span>
           </div>
-
-          {/* Small Dark Rectangular Info Button placed well above Start */}
-          <button
-            id="infoExplanationBtn"
-            type="button"
-            onClick={() => setShowInfoModal(true)}
-            title="Explanation: How Pomodoro works"
-            className={`mb-5 px-3 py-1 rounded-[3px] border flex items-center justify-center transition-all cursor-pointer shadow-xs ${
-              isLight
-                ? 'bg-stone-100 text-stone-500 hover:text-stone-800 border-stone-300 hover:border-stone-400 hover:bg-stone-200'
-                : 'bg-[#1c1d22] text-stone-300 hover:text-white hover:bg-black border-stone-700/80 hover:border-stone-500'
-            }`}
-          >
-            <Info size={13} />
-          </button>
 
           <button
             id="startBtn"
@@ -930,20 +909,18 @@ export default function PomofocusApp() {
             {notificationsEnabled ? <Bell size={14} /> : <BellOff size={14} />}
           </button>
 
-          {/* Shortcuts Info */}
-          <button
-            id="shortcutsBtn"
-            type="button"
-            onClick={() => setShowShortcuts(true)}
-            title="Keyboard Shortcuts (?)"
+          {/* Direct Email Contact Link */}
+          <a
+            href="mailto:tibet@maximuslabs.io"
+            title="Email the Developer"
             className={`w-8 h-8 rounded border flex items-center justify-center transition-colors cursor-pointer ${
               isLight
                 ? 'border-stone-300 text-stone-500 hover:text-stone-800 bg-stone-100'
                 : 'border-white/5 text-stone-500 hover:text-stone-300'
             }`}
           >
-            <HelpCircle size={14} />
-          </button>
+            <Mail size={14} />
+          </a>
 
           {/* Ko-fi Support Link - Pill Style */}
           <a
@@ -960,10 +937,6 @@ export default function PomofocusApp() {
             <span className="text-sm">☕</span>
             <span>Support</span>
           </a>
-        </div>
-
-        <div className={`hidden sm:block text-[11px] tracking-wider ${isLight ? 'text-stone-500' : 'text-stone-500'}`}>
-          Background Tab Drift Protected &bull; www.pomofocus.live
         </div>
 
         <div className="flex items-center gap-3 relative">
@@ -1017,129 +990,6 @@ export default function PomofocusApp() {
           )}
         </div>
       </footer>
-
-      {/* Keyboard Shortcuts Modal */}
-      {showShortcuts && (
-        <div
-          id="shortcutsModalRoot"
-          className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4 backdrop-blur-xs"
-          onClick={() => setShowShortcuts(false)}
-        >
-          <div
-            className={`w-full max-w-sm rounded-xl border p-5 shadow-2xl flex flex-col gap-4 ${
-              isLight
-                ? 'border-stone-300 bg-white text-stone-800'
-                : isDarkGray
-                ? 'border-white/15 bg-[#32363e] text-stone-100'
-                : 'border-white/10 bg-[#181a1f] text-stone-200'
-            }`}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className={`flex items-center justify-between pb-2 border-b ${isLight ? 'border-stone-200' : 'border-white/10'}`}>
-              <span className="text-sm font-semibold tracking-wide">Keyboard Shortcuts</span>
-              <button
-                type="button"
-                onClick={() => setShowShortcuts(false)}
-                className={`cursor-pointer ${isLight ? 'text-stone-500 hover:text-stone-900' : 'text-stone-400 hover:text-white'}`}
-              >
-                <X size={16} />
-              </button>
-            </div>
-
-            <div className={`flex flex-col gap-2.5 text-xs ${isLight ? 'text-stone-700' : 'text-stone-300'}`}>
-              <div className="flex justify-between items-center">
-                <span>Start Timer</span>
-                <kbd className={`px-2 py-0.5 rounded font-mono text-[11px] border ${
-                  isLight ? 'bg-stone-100 border-stone-300 text-stone-800' : 'bg-black/40 border-white/15 text-stone-200'
-                }`}>Space</kbd>
-              </div>
-              <div className="flex justify-between items-center">
-                <span>Toggle Audio Chime</span>
-                <kbd className={`px-2 py-0.5 rounded font-mono text-[11px] border ${
-                  isLight ? 'bg-stone-100 border-stone-300 text-stone-800' : 'bg-black/40 border-white/15 text-stone-200'
-                }`}>M</kbd>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Explanation Popup Modal */}
-      {showInfoModal && (
-        <div
-          id="infoModalRoot"
-          className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4 backdrop-blur-xs"
-          onClick={() => setShowInfoModal(false)}
-        >
-          <div
-            className={`w-full max-w-md rounded-xl border p-5 sm:p-6 shadow-2xl flex flex-col gap-4 ${
-              isLight
-                ? 'border-stone-300 bg-white text-stone-800'
-                : isDarkGray
-                ? 'border-white/15 bg-[#32363e] text-stone-100'
-                : 'border-white/10 bg-[#181a1f] text-stone-200'
-            }`}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className={`flex items-center justify-between pb-2 border-b ${isLight ? 'border-stone-200' : 'border-white/10'}`}>
-              <span className="text-sm font-semibold tracking-wide">Explanation</span>
-              <button
-                id="closeInfoModalBtn"
-                type="button"
-                onClick={() => setShowInfoModal(false)}
-                className={`cursor-pointer ${isLight ? 'text-stone-500 hover:text-stone-900' : 'text-stone-400 hover:text-white'}`}
-                title="Close"
-              >
-                <X size={16} />
-              </button>
-            </div>
-
-            <ul className={`flex flex-col gap-3 text-xs sm:text-sm leading-relaxed ${isLight ? 'text-stone-700' : 'text-stone-300'}`}>
-              <li className="flex items-start gap-3">
-                <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[11px] font-medium shrink-0 mt-0.5 ${
-                  isLight ? 'bg-stone-100 text-stone-700 border border-stone-300' : 'bg-white/10 text-stone-200 border border-white/10'
-                }`}>
-                  1
-                </span>
-                <span>Pick a task you want to complete.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[11px] font-medium shrink-0 mt-0.5 ${
-                  isLight ? 'bg-stone-100 text-stone-700 border border-stone-300' : 'bg-white/10 text-stone-200 border border-white/10'
-                }`}>
-                  2
-                </span>
-                <span>Set a timer for 25 minutes.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[11px] font-medium shrink-0 mt-0.5 ${
-                  isLight ? 'bg-stone-100 text-stone-700 border border-stone-300' : 'bg-white/10 text-stone-200 border border-white/10'
-                }`}>
-                  3
-                </span>
-                <span>Work with no distractions until the timer rings.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[11px] font-medium shrink-0 mt-0.5 ${
-                  isLight ? 'bg-stone-100 text-stone-700 border border-stone-300' : 'bg-white/10 text-stone-200 border border-white/10'
-                }`}>
-                  4
-                </span>
-                <span>Take a short break of 5 minutes.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[11px] font-medium shrink-0 mt-0.5 ${
-                  isLight ? 'bg-stone-100 text-stone-700 border border-stone-300' : 'bg-white/10 text-stone-200 border border-white/10'
-                }`}>
-                  5
-                </span>
-                <span>Take a long break of 15, 20, 25 or 30 minutes after four work intervals.</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      )}
-
     </div>
   );
 }
