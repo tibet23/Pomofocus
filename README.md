@@ -1,6 +1,6 @@
 # Pomofocus
 
-> An ultra-minimalist, distraction-free Pomodoro timer designed for deep work. Engineered with high-contrast monochrome themes, timestamp-accurate background drift protection, and an integrated task management workflow.
+> An ultra-minimalist, distraction-free Pomodoro timer designed for deep work. Engineered with high-contrast monochrome themes, timestamp-accurate background drift protection, and a zero-modal interface adhering to a strict "no pause: commit or reset" philosophy.
 
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19-blue?style=flat-square&logo=react)](https://react.dev/)
@@ -12,7 +12,7 @@
 
 ## Overview
 
-**Pomofocus** strips away the visual clutter of traditional productivity tools in favor of mathematical typography, strict negative space, and high-contrast monochrome color schemes. It delivers a tactile, focused environment that keeps you locked into your flow state without battery-draining animations or intrusive notifications.
+**Pomofocus** strips away the visual clutter of traditional productivity tools in favor of mathematical typography, strict negative space, and high-contrast monochrome color schemes. It delivers a tactile, focused environment that keeps you locked into your flow state without battery-draining animations, intrusive notifications, or modal overlays.
 
 ---
 
@@ -21,6 +21,7 @@
 ### ⏱️ Precision Pomodoro Engine
 - **Classic 25-5-15 Interval Sequences**: Effortlessly switch between **Focus**, **Short Break**, and **Long Break** sessions.
 - **Drift-Protected Background Timing**: Uses timestamp-delta calculations (`Date.now()`) rather than naive interval ticks, ensuring countdown accuracy even when browser tabs are throttled or placed into the background.
+- **Commit or Reset Philosophy**: No pause buttons or modal interruptions—commit fully to your session or reset to start fresh.
 - **Cycle & Streak Tracking**: Visual round indicators keep track of completed focus sessions in each set.
 
 ### 🎨 High-Contrast Monochrome Themes
@@ -42,6 +43,7 @@
 ### ⌨️ Keyboard Shortcuts
 - `Space`: Start Timer
 - `M`: Toggle Audio Chime
+- `Escape`: Dismiss Reset Confirmation
 
 ---
 
@@ -58,7 +60,6 @@
 
 ---
 
-
 ## Project Structure
 
 ```
@@ -74,7 +75,6 @@ pomofocus/
 ├── package.json            # Project manifest and scripts
 ├── tsconfig.json           # TypeScript configuration
 └── README.md
-```
 
 ---
 
@@ -84,6 +84,12 @@ Pomofocus is 100% client-side:
 - **No telemetry or analytics tracking**
 - **No external account requirements**
 - **Offline capable**: All session data and settings stay securely inside your browser's local storage.
+
+---
+
+## Feedback & Contact
+
+Have feedback or suggestions? Reach out directly to the developer at [tibet@maximuslabs.io](mailto:tibet@maximuslabs.io).
 
 ---
 
