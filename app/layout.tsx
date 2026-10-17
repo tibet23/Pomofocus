@@ -45,9 +45,31 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({children}: {children: React.ReactNode}) {
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  'name': 'Pomofocus',
+  'url': 'https://www.pomofocus.live',
+  'applicationCategory': 'ProductivityApplication',
+  'operatingSystem': 'All',
+  'offers': {
+    '@type': 'Offer',
+    'price': '0',
+    'priceCurrency': 'USD',
+  },
+  'description':
+    'Hyper-minimal, local-first Pomodoro session timer designed for deep work and structured focus without distractions.',
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body suppressHydrationWarning>{children}</body>
     </html>
   );
