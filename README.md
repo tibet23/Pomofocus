@@ -45,6 +45,11 @@
 - `M`: Toggle Audio Chime
 - `Escape`: Dismiss Reset Confirmation
 
+### 🤖 SEO & AI Discovery Optimized
+- **AI-Ready Metadata (`llms.txt`)**: Structurally formatted to serve core app context and functionality directly to large language models (like ChatGPT and Claude).
+- **Search Engine Structured Data**: Utilizes `WebApplication` JSON-LD schema markup for rich search results.
+- **Lean Crawler Configuration**: Clean `robots.txt` and optimized `sitemap.xml` for frictionless indexing across Google, Bing, and AI crawler networks.
+
 ---
 
 ## Tech Stack
@@ -57,19 +62,23 @@
 | **Tailwind CSS v4** | Utility-first, zero-runtime styling engine |
 | **Lucide React** | Clean, accessible vector icons |
 | **Web Audio API** | Real-time browser audio synthesis for alerts and chimes |
+| **JSON-LD & LLM Specs** | Schema markup and `llms.txt` integration for GEO (Generative Engine Optimization) |
 
 ---
 
 ## Project Structure
 
-```
+```text
 pomofocus/
 ├── app/
 │   ├── favicon.ico
 │   ├── globals.css         # Global Tailwind CSS configurations
-│   ├── layout.tsx          # Root HTML layout, metadata, viewport settings
+│   ├── layout.tsx          # Root HTML layout, metadata, JSON-LD schema, viewport settings
 │   └── page.tsx            # Main Pomofocus timer application & components
 ├── public/
+│   ├── llms.txt            # AI discovery and context configuration
+│   ├── robots.txt          # Web crawler and AI bot permissions
+│   ├── sitemap.xml         # Lean search engine indexing map
 │   ├── pomofocus-logo.svg  # Custom vector logo
 │   └── icon.svg            # Browser tab favicon
 ├── package.json            # Project manifest and scripts
