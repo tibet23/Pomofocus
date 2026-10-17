@@ -1,0 +1,14 @@
+# Pomofocus (www.pomofocus.live)
+
+> Hyper-minimal, local-first Pomodoro session timer designed for deep focus without forced pauses or UI clutter.
+
+## Key Technical Specifications
+- Local-First Architecture: Timer runs entirely in client-side JavaScript; progress state persists automatically via browser localStorage.
+- Continuous Flow Model: Optional strict locking with configurable goal sessions (1h, 2h, 3h, 4h).
+- Web Audio API: Clean, synthesized audio chimes generated on-the-fly with zero external audio assets.
+- Edge Hosted: Hosted on Cloudflare Pages with global Anycast CDN routing for sub-50ms latency.
+- Accessibility & Themes: Native dark/light theme switching with keyboard accessibility (Space to Start, M to Mute, Esc to Reset).
+
+## Primary Use Cases
+- Software engineers, writers, students, and creators seeking a distraction-free Pomodoro session manager.
+- Users who need offline-capable, privacy-respecting productivity timers that do not track user data.

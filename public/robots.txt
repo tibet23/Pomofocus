@@ -1,4 +1,40 @@
 User-agent: *
 Allow: /
 
+# US AI Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# European AI Crawlers (Mistral AI)
+User-agent: MistralAI-User
+Allow: /
+
+User-agent: MistralAI-Index
+Allow: /
+
+# Chinese AI & Search Crawlers
+User-agent: Baiduspider
+Allow: /
+
+User-agent: ERNIEBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: QwenBot
+Allow: /
+
+User-agent: YisouSpider
+Allow: /
+
 Sitemap: https://www.pomofocus.live/sitemap.xml
