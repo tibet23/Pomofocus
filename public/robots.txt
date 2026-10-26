@@ -37,4 +37,5 @@ Allow: /
 User-agent: YisouSpider
 Allow: /
 
-Sitemap: https://www.pomofocus.live/sitemap.xml
+# SEO & Canonical Routing
+Sitemap: https://pomofocus.live/sitemap.xml
