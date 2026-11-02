@@ -47,3 +47,13 @@ To tackle last-mile network latency and ensure the timer feels instantaneous on 
 
 * **HTTP/3 (QUIC):** Upgraded from HTTP/2 to HTTP/3 (UDP-based). This eliminates head-of-line blocking, ensuring that mobile users experiencing minor packet loss on cellular networks do not experience frozen page loads.
 * **103 Early Hints:** Instructs Cloudflare to send preliminary headers to the browser before the Next.js server finishes compiling the HTML document. The browser begins downloading critical CSS and JavaScript bundles in parallel, drastically reducing the Largest Contentful Paint (LCP) and protecting the application's Core Web Vitals for search rankings.
+
+## 5. Edge Security & Automated Threat Mitigation
+
+To protect the Next.js origin from malicious reconnaissance, protocol downgrades, and compute exhaustion, strict security boundaries are enforced entirely at the Cloudflare edge:
+
+* **Automated Bot Fight Mode:** Actively challenges and drops headless scrapers and legacy bot probes (e.g., targeting `/.circleci`, `/login`, or `/api/auth`). This origin-shielding preserves the application's ~75% edge cache hit rate by terminating junk requests before they reach the Next.js server.
+* **HSTS (HTTP Strict Transport Security):** Enforced globally with a 6-month `max-age` and full subdomain inclusion (`www.pomofocus.live`). This commands client browsers to strictly communicate via HTTPS, completely eliminating the risk of protocol downgrade attacks.
+* **MIME-Sniffing Protection:** Injects the `X-Content-Type-Options: nosniff` header across all edge responses, preventing browsers from incorrectly guessing file types and inadvertently executing malicious scripts.
+* **Custom WAF Rules:** Drops path scanners looking for legacy CMS or repository vulnerabilities (e.g., `wp-admin`, `.git`) at the nearest regional edge node.
+* **Zero-Trust Infrastructure Access:** Cloudflare DNS routing, Edge configurations, and SSL/TLS certificate management are strictly locked down via Multi-Factor Authentication (MFA).
