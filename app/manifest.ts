@@ -7,7 +7,8 @@ export default function manifest(): MetadataRoute.Manifest {
     id: '/',
     name: 'Pomofocus',
     short_name: 'Pomofocus',
-    description: 'Ultra-minimalist deep focus timer with digital clock view, intelligent session sequences, and background drift protection.',
+    description:
+      'Ultra-minimalist deep focus timer with digital clock view, intelligent session sequences, and background drift protection.',
     start_url: '/',
     scope: '/',
     display: 'browser',
@@ -19,6 +20,18 @@ export default function manifest(): MetadataRoute.Manifest {
         sizes: 'any',
         type: 'image/svg+xml',
         purpose: 'any',
+      },
+      {
+        src: '/icon.png',
+        sizes: '144x144',
+        type: 'image/png',
+        purpose: 'any',
+      },
+      {
+        src: '/icon.png',
+        sizes: '144x144',
+        type: 'image/png',
+        purpose: 'maskable',
       },
       {
         src: '/pomofocus-logo.svg',

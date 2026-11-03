@@ -15,10 +15,14 @@ export const metadata: Metadata = {
   keywords: [
     'pomofocus',
     'pomofocus live',
+    'pomodoro timer',
     'ad-free pomodoro timer',
     'minimalist focus timer',
     'study timer',
     'online pomodoro clock',
+    'pomodoro technique',
+    'tomato timer',
+    'productivity timer',
   ],
   appleWebApp: {
     capable: true,
@@ -26,8 +30,11 @@ export const metadata: Metadata = {
     title: 'Pomofocus Live',
   },
   icons: {
-    icon: '/icon.svg',
-    apple: '/apple-touch-icon.png',
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/icon.png', sizes: '144x144', type: 'image/png' },
+    ],
+    apple: '/icon.png',
   },
   openGraph: {
     title: 'Pomofocus Live – Ad-Free Minimalist Pomodoro Timer',
